@@ -5,7 +5,7 @@ dicas de nutrição filtráveis por tema e uma calculadora de IMC educativa.
 Todo o cálculo acontece no navegador do visitante — nenhum dado é enviado a
 servidor algum, o que evita qualquer tratamento de dado sensível de saúde.
 
-**Versão:** v1.3.1
+**Versão:** v1.3.2
 **Desenvolvido por:** DomDevLabs · domdevlabs@gmail.com · (21) 99532-1173
 
 ## Estrutura
@@ -99,6 +99,32 @@ nutricionista com registro no CRN (Lei 8.234/1991). Por isso o site:
 Manter esses avisos protege a Caroline. Quando ela se formar e tirar o CRN,
 é só trocar o texto do selo, o aviso da seção "Sobre" e as duas perguntas —
 aí sim pode anunciar consulta.
+
+## Cuidado ao editar: a CSP proíbe `style=` inline
+
+O site roda com `style-src 'self'`, sem `unsafe-inline`. Isso significa que
+**atributo `style=` no HTML é simplesmente ignorado pelo navegador** — o
+elemento aparece fora do lugar e o único aviso fica no console. Foi assim que
+os números da régua apareceram empilhados em produção enquanto o arquivo
+local, sem CSP, ficava perfeito.
+
+- posição fixa → regra no `style.css` (a régua usa `li[data-p="60"]`)
+- posição calculada → JavaScript via `elemento.style.prop = valor`, que a CSP
+  permite, porque CSSOM não é atributo inline
+
+Para testar como o navegador do visitante vê, sirva os arquivos com o mesmo
+cabeçalho, e não pelo `file://`:
+
+```bash
+python3 - <<'EOF'
+import http.server, functools
+CSP = "default-src 'self'; style-src 'self'; script-src 'self'"
+class H(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header('Content-Security-Policy', CSP); super().end_headers()
+http.server.HTTPServer(('127.0.0.1', 8778), H).serve_forever()
+EOF
+```
 
 ## Acessibilidade e privacidade
 

@@ -286,8 +286,19 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
 .regua-faixa[data-faixa="adequado"]  { flex: 0 0 26%; background: var(--salvia); }
 .regua-faixa[data-faixa="baixo"]     { flex: 0 0 14%; background: #e9d9e0; }
 
-/* números à esquerda, cada um com seu traço fino até a barra */
+/* números à esquerda, cada um com seu traço fino até a barra.
+   A posição vem de data-p e não de style= inline: a CSP do site é
+   style-src 'self', que bloqueia atributo style no HTML. */
 .regua-escala, .regua-nomes { list-style: none; margin: 0; padding: 0; }
+.regua-escala li[data-p="0"]   { bottom: 0; }
+.regua-escala li[data-p="14"]  { bottom: 14%; }
+.regua-escala li[data-p="40"]  { bottom: 40%; }
+.regua-escala li[data-p="60"]  { bottom: 60%; }
+.regua-escala li[data-p="100"] { bottom: 100%; }
+.regua-nomes li[data-p="7"]    { bottom: 7%; }
+.regua-nomes li[data-p="27"]   { bottom: 27%; }
+.regua-nomes li[data-p="50"]   { bottom: 50%; }
+.regua-nomes li[data-p="80"]   { bottom: 80%; }
 .regua-escala li {
   position: absolute; left: 0; width: 2.2rem; text-align: right;
   transform: translateY(50%); font-size: .78rem; font-weight: 600;
