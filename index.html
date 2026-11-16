@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Caroline Verdan — Acadêmica de Nutrição</title>
+<meta name="description" content="Dicas de nutrição em linguagem simples, com base em evidência, por Caroline Verdan, acadêmica de Nutrição. Inclui calculadora de IMC e faixa de peso saudável.">
+<link rel="canonical" href="https://carolineverdan.vercel.app/">
+<meta name="theme-color" content="#3a2230">
+<meta name="author" content="Caroline Verdan">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Caroline Verdan — Nutrição">
+<meta property="og:title" content="Caroline Verdan — Acadêmica de Nutrição">
+<meta property="og:description" content="Dicas de nutrição em linguagem simples, com base em evidência. Calculadora de IMC e faixa de peso saudável.">
+<meta property="og:url" content="https://carolineverdan.vercel.app/">
+<meta property="og:image" content="https://carolineverdan.vercel.app/assets/capa.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preload" href="assets/fontes/fraunces-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fontes/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/caroline.webp">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<a class="pular" href="#dicas">Ir para as dicas</a>
+
+<header class="topo">
+  <div class="conteiner topo-linha">
+    <a class="marca" href="#">
+      <span class="marca-nome">Caroline Verdan</span>
+      <span class="marca-sub">Nutrição</span>
+    </a>
+    <nav class="topo-nav" aria-label="Principal">
+      <a href="#dicas">Dicas</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato" class="botao botao-pequeno">Falar comigo</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ====================== APRESENTAÇÃO ====================== -->
+  <section class="heroi">
+    <div class="conteiner heroi-bloco">
+
+      <div class="heroi-topo">
+        <img class="retrato" src="assets/caroline.webp" width="140" height="140"
+             alt="Caroline Verdan, acadêmica de Nutrição."
+             fetchpriority="high" decoding="async">
+        <div class="heroi-nome">
+          <p class="selo">Acadêmica de Nutrição</p>
+          <h1>Caroline Verdan</h1>
+        </div>
+      </div>
+
+      <p class="heroi-lead">
+        Comida boa não precisa de regra complicada. Aqui eu reúno o que aprendo na
+        faculdade e traduzo para o que cabe na sua semana: o que colocar no prato,
+        o que olhar no rótulo e quais mitos já podem ser aposentados.
+      </p>
+
+      <div class="heroi-acoes">
+        <a class="botao" href="#dicas">Ver as dicas</a>
+        <a class="botao botao-vazado" href="#calculadora">Calcular meu IMC</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================== DICAS ====================== -->
+  <section class="secao secao-dicas" id="dicas">
+    <div class="conteiner">
+      <p class="secao-selo">Conteúdo</p>
+      <h2>Dicas de nutrição</h2>
+      <p class="secao-lead">
+        Catorze coisas que mudam o dia a dia mais do que qualquer dieta da moda.
+        Orientações gerais, de caráter educativo — nada aqui substitui um plano
+        individual feito por um nutricionista.
+      </p>
+
+      <div class="filtros" role="group" aria-label="Filtrar dicas por tema">
+        <button type="button" class="filtro ativo" data-filtro="todas">Todas</button>
+        <button type="button" class="filtro" data-filtro="dia">Dia a dia</button>
+        <button type="button" class="filtro" data-filtro="prato">Montando o prato</button>
+        <button type="button" class="filtro" data-filtro="mercado">No mercado</button>
+        <button type="button" class="filtro" data-filtro="mitos">Mitos</button>
+      </div>
+
+      <p class="filtro-aviso so-leitor" id="filtro-aviso" role="status" aria-live="polite"></p>
+
+      <ul class="dicas" id="lista-dicas">
+
+        <li class="dica" data-tema="dia">
+          <span class="dica-num">01</span>
+          <h3>Coloque proteína no café da manhã</h3>
+          <p>Ovo, iogurte natural, queijo, tapioca com frango. Café com pão sozinho
+             sustenta por duas horas — é por isso que a fome das dez da manhã chega
+             sempre no mesmo horário.</p>
+          <span class="dica-tema">Dia a dia</span>
+        </li>
+
+        <li class="dica" data-tema="dia">
+          <span class="dica-num">02</span>
+          <h3>Não chegue faminta ao jantar</h3>
+          <p>Um lanche de tarde com fruta e uma castanha custa cinco minutos e evita
+             o descontrole da noite, que é quando a maioria das metas do dia vai
+             por água abaixo.</p>
+          <span class="dica-tema">Dia a dia</span>
+        </li>
+
+        <li class="dica" data-tema="dia">
+          <span class="dica-num">03</span>
+          <h3>Dormir faz parte da alimentação</h3>
+          <p>Noite curta aumenta a grelina e derruba a leptina — os dois hormônios
+             que regulam fome e saciedade. Você acorda com mais fome e com mais
+             vontade de doce, e não é falta de força de vontade.</p>
+          <span class="dica-tema">Dia a dia</span>
+        </li>
+
+        <li class="dica" data-tema="dia">
+          <span class="dica-num">04</span>
+          <h3>Antes do lanche fora de hora, beba água</h3>
+          <p>Sede é confundida com fome o tempo todo. Um copo de água e dez minutos
+             resolvem boa parte das idas desnecessárias à cozinha.</p>
+          <span class="dica-tema">Dia a dia</span>
+        </li>
+
+        <li class="dica" data-tema="dia">
+          <span class="dica-num">05</span>
+          <h3>Suco não substitui a fruta</h3>
+          <p>A fibra fica no liquidificador e no coador. Sem ela, o açúcar da fruta
+             entra mais rápido na circulação e a saciedade dura bem menos. Fruta
+             inteira, sempre que der.</p>
+          <span class="dica-tema">Dia a dia</span>
+        </li>
+
+        <li class="dica" data-tema="prato">
+          <span class="dica-num">06</span>
+          <h3>Metade, um quarto, um quarto</h3>
+          <p>Metade do prato de legumes e verduras, um quarto de proteína, um quarto
+             de carboidrato. É a regra mais simples que existe e funciona sem contar
+             caloria nenhuma.</p>
+          <span class="dica-tema">Montando o prato</span>
+        </li>
+
+        <li class="dica" data-tema="prato">
+          <span class="dica-num">07</span>
+          <h3>Arroz com feijão é um acerto</h3>
+          <p>Juntos eles se completam em aminoácidos e formam uma proteína de boa
+             qualidade. A combinação que o brasileiro já faz por tradição é estudada
+             no mundo inteiro.</p>
+          <span class="dica-tema">Montando o prato</span>
+        </li>
+
+        <li class="dica" data-tema="prato">
+          <span class="dica-num">08</span>
+          <h3>Comece pela salada</h3>
+          <p>Abrir a refeição pela fibra e pela proteína deixa a subida da glicemia
+             mais suave do que começar pelo arroz. Mesma comida, mesma quantidade,
+             ordem diferente.</p>
+          <span class="dica-tema">Montando o prato</span>
+        </li>
+
+        <li class="dica" data-tema="prato">
+          <span class="dica-num">09</span>
+          <h3>Cor no prato não é enfeite</h3>
+          <p>Cada cor vem de um grupo diferente de compostos: o vermelho do tomate,
+             o roxo da beterraba, o verde-escuro do brócolis. Variar a cor é o jeito
+             prático de variar o nutriente.</p>
+          <span class="dica-tema">Montando o prato</span>
+        </li>
+
+        <li class="dica" data-tema="mercado">
+          <span class="dica-num">10</span>
+          <h3>Leia a lista de ingredientes, não a tabela</h3>
+          <p>A tabela diz quanto tem. A lista diz o que é. Se são mais de cinco
+             ingredientes e você não reconhece metade deles como comida, é
+             ultraprocessado.</p>
+          <span class="dica-tema">No mercado</span>
+        </li>
+
+        <li class="dica" data-tema="mercado">
+          <span class="dica-num">11</span>
+          <h3>Açúcar se esconde atrás de muitos nomes</h3>
+          <p>Xarope de glicose, maltodextrina, dextrose, açúcar invertido, melado.
+             Aparecem separados justamente para que nenhum deles lidere a lista
+             de ingredientes.</p>
+          <span class="dica-tema">No mercado</span>
+        </li>
+
+        <li class="dica" data-tema="mercado">
+          <span class="dica-num">12</span>
+          <h3>"Zero açúcar" não é "zero caloria"</h3>
+          <p>E "integral" só vale quando a farinha integral é o primeiro ingrediente
+             da lista. Muito pão integral de supermercado é pão branco com uma
+             pitada de farelo e corante caramelo.</p>
+          <span class="dica-tema">No mercado</span>
+        </li>
+
+        <li class="dica" data-tema="mitos">
+          <span class="dica-num">13</span>
+          <h3>Carboidrato à noite não engorda</h3>
+          <p>O corpo não tem relógio de ponto. O que pesa é o total do dia, não o
+             horário em que o arroz foi comido. Jantar sem carboidrato só ajuda
+             quem dorme melhor assim.</p>
+          <span class="dica-tema">Mito</span>
+        </li>
+
+        <li class="dica" data-tema="mitos">
+          <span class="dica-num">14</span>
+          <h3>Detox não existe do jeito que vendem</h3>
+          <p>Fígado e rins fazem esse trabalho 24 horas por dia, de graça. Suco verde
+             é uma bebida — pode ser boa, mas não limpa nada que o seu corpo já não
+             estivesse limpando.</p>
+          <span class="dica-tema">Mito</span>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====================== CALCULADORA ====================== -->
+  <section class="secao secao-calculadora" id="calculadora">
+    <div class="conteiner">
+      <p class="secao-selo">Ferramenta</p>
+      <h2>Calcule seu IMC</h2>
+      <p class="secao-lead">
+        Coloque seu peso e sua altura para ver onde você está hoje e qual é a faixa
+        de peso de referência para a sua altura. A conta acontece no seu próprio
+        navegador — nada é enviado para lugar nenhum.
+      </p>
+
+      <div class="calc-grade">
+
+        <form class="form" id="form-medidas" novalidate>
+          <div class="campos">
+            <div class="campo">
+              <label for="peso">Peso</label>
+              <div class="campo-caixa">
+                <input type="text" id="peso" inputmode="decimal" placeholder="68,5"
+                       autocomplete="off" enterkeyhint="done" aria-describedby="ajuda-peso">
+                <span class="unidade" aria-hidden="true">kg</span>
+              </div>
+              <p class="ajuda" id="ajuda-peso">Em quilos. Pode usar vírgula.</p>
+            </div>
+
+            <div class="campo">
+              <label for="altura">Altura</label>
+              <div class="campo-caixa">
+                <input type="text" id="altura" inputmode="numeric" placeholder="165"
+                       autocomplete="off" enterkeyhint="done" aria-describedby="ajuda-altura">
+                <span class="unidade" aria-hidden="true">cm</span>
+              </div>
+              <p class="ajuda" id="ajuda-altura">Em centímetros, não em metros.</p>
+            </div>
+          </div>
+
+          <fieldset class="escolha">
+            <legend>Sexo biológico</legend>
+            <div class="escolha-opcoes">
+              <input type="radio" name="sexo" id="sexo-f" value="f">
+              <label for="sexo-f">Feminino</label>
+              <input type="radio" name="sexo" id="sexo-m" value="m">
+              <label for="sexo-m">Masculino</label>
+            </div>
+            <p class="ajuda">Não muda o IMC. Entra no cálculo de energia, junto com a idade.</p>
+          </fieldset>
+
+          <p class="erro" id="erro" role="alert" hidden></p>
+
+          <details class="refinar">
+            <summary>Refinar com idade e rotina <span class="refinar-nota">opcional</span></summary>
+            <div class="refinar-corpo">
+              <div class="campos">
+                <div class="campo">
+                  <label for="idade">Idade</label>
+                  <div class="campo-caixa">
+                    <input type="text" id="idade" inputmode="numeric" placeholder="29" autocomplete="off">
+                    <span class="unidade" aria-hidden="true">anos</span>
+                  </div>
+                </div>
+                <div class="campo">
+                  <label for="rotina">Rotina de movimento</label>
+                  <div class="campo-caixa">
+                    <select id="rotina">
+                      <option value="1.2">Sentada quase o dia todo</option>
+                      <option value="1.375">Exercício leve, 1 a 3 dias</option>
+                      <option value="1.55" selected>Exercício moderado, 3 a 5 dias</option>
+                      <option value="1.725">Exercício intenso, 6 a 7 dias</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <p class="refinar-explica">
+                Com idade, sexo e rotina a página estima o gasto energético diário pela
+                equação de Mifflin-St Jeor. É uma estimativa de ponto de partida, não
+                uma prescrição.
+              </p>
+            </div>
+          </details>
+
+          <div class="form-acoes">
+            <button type="button" class="botao botao-vazado" id="btn-limpar">Limpar campos</button>
+          </div>
+        </form>
+
+        <div class="instrumento">
+          <div class="regua-bloco">
+            <div class="regua" id="regua">
+              <div class="regua-faixa" data-faixa="baixo"></div>
+              <div class="regua-faixa" data-faixa="adequado"></div>
+              <div class="regua-faixa" data-faixa="sobrepeso"></div>
+              <div class="regua-faixa" data-faixa="obesidade"></div>
+              <ul class="regua-tracos" id="regua-tracos" aria-hidden="true"></ul>
+              <div class="marcador" id="marcador" hidden>
+                <span class="marcador-linha"></span>
+                <span class="marcador-valor" id="marcador-valor">—</span>
+              </div>
+            </div>
+            <p class="regua-legenda">Índice de massa corporal</p>
+          </div>
+
+          <div class="leitura">
+            <p class="leitura-vazia" id="leitura-vazia">
+              Sem medidas ainda. Preencha peso e altura para ver a leitura.
+            </p>
+
+            <div class="leitura-corpo" id="leitura-corpo" hidden>
+              <p class="leitura-rotulo">Seu IMC</p>
+              <p class="leitura-numero" id="imc-numero">—</p>
+              <p class="leitura-classe" id="imc-classe">—</p>
+              <p class="leitura-frase" id="imc-frase"></p>
+
+              <dl class="leitura-dados">
+                <div>
+                  <dt>Faixa de peso de referência para a sua altura</dt>
+                  <dd id="faixa-peso">—</dd>
+                </div>
+                <div id="linha-diferenca">
+                  <dt id="diferenca-rotulo">Distância até essa faixa</dt>
+                  <dd id="diferenca-valor">—</dd>
+                </div>
+                <div id="linha-energia" hidden>
+                  <dt>Gasto energético estimado por dia</dt>
+                  <dd id="energia-valor">—</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- gráficos -->
+      <div class="visual" id="visual" hidden>
+        <figure class="painel painel-grafico">
+          <h3>Seu peso e a faixa de referência</h3>
+          <svg viewBox="0 0 340 96" class="gr" id="graf-faixa" role="img" aria-labelledby="faixa-desc"></svg>
+          <figcaption id="faixa-desc" class="gr-desc"></figcaption>
+        </figure>
+
+        <figure class="painel painel-grafico" id="painel-projecao" hidden>
+          <h3>Em quanto tempo, num ritmo seguro</h3>
+          <svg viewBox="0 0 340 152" class="gr" id="graf-projecao" role="img" aria-labelledby="proj-desc"></svg>
+          <p class="gr-legenda">
+            <span class="chave chave-rapida"></span><span id="leg-rapida">—</span>
+            <span class="chave chave-lenta"></span><span id="leg-lenta">—</span>
+          </p>
+          <figcaption id="proj-desc" class="gr-desc"></figcaption>
+        </figure>
+      </div>
+
+      <p class="calc-nota">
+        O IMC é uma triagem populacional, não um diagnóstico. Ele não sabe quanto do
+        seu peso é músculo, onde a gordura está distribuída, nem o que dizem os seus
+        exames. Serve para dar um ponto de partida à conversa — o resto é com um
+        profissional.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====================== SOBRE ====================== -->
+  <section class="secao secao-sobre" id="sobre">
+    <div class="conteiner sobre-grade">
+      <div>
+        <p class="secao-selo">Quem escreve</p>
+        <h2>Prazer, sou a Caroline</h2>
+        <p>
+          Estou cursando Nutrição e escrevo aqui sobre o que estudo, do jeito que eu
+          gostaria que tivessem me explicado: sem terrorismo com comida, sem lista de
+          alimento proibido e sem promessa de resultado em sete dias.
+        </p>
+        <p>
+          Minha praia é a nutrição do dia a dia — a que resolve o almoço de quarta-feira,
+          o lanche do trabalho e a compra do mês. Acredito que mudança que dura é a que
+          cabe na rotina que você já tem.
+        </p>
+        <p class="aviso-formacao">
+          <strong>Importante:</strong> sou acadêmica, ainda não sou nutricionista
+          registrada. Todo o conteúdo deste site é educativo e de caráter geral.
+          Avaliação individual, prescrição de dieta e acompanhamento clínico são
+          atividades privativas do nutricionista com registro no CRN — se é disso que
+          você precisa, procure um profissional habilitado.
+        </p>
+      </div>
+      <ul class="credenciais">
+        <li><span>Formação</span>Graduanda em Nutrição</li>
+        <li><span>Foco</span>Educação alimentar e hábitos do dia a dia</li>
+        <li><span>Base</span>Rio de Janeiro</li>
+        <li><span>Conteúdo</span>Dicas semanais aqui e no Instagram</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====================== PERGUNTAS ====================== -->
+  <section class="secao secao-perguntas" id="perguntas">
+    <div class="conteiner perguntas-grade">
+      <div>
+        <p class="secao-selo">Dúvidas</p>
+        <h2>Perguntas que sempre chegam</h2>
+      </div>
+      <div class="perguntas">
+
+        <details class="pergunta">
+          <summary>Você monta plano alimentar?</summary>
+          <p>
+            Ainda não. Montar plano alimentar e prescrever dieta é atividade privativa
+            do nutricionista registrado no CRN, e eu ainda estou na graduação. O que
+            faço aqui é conteúdo educativo, que é diferente — e permitido.
+          </p>
+        </details>
+
+        <details class="pergunta">
+          <summary>Então para que serve a calculadora?</summary>
+          <p>
+            Para você conhecer um número que aparece em toda consulta e entender o que
+            ele significa — e o que ele não significa. É uma ferramenta de educação,
+            não de diagnóstico.
+          </p>
+        </details>
+
+        <details class="pergunta">
+          <summary>Posso te mandar uma dúvida?</summary>
+          <p>
+            Pode, e eu adoro receber. Respondo dúvidas gerais sobre os temas que
+            publico aqui. O que for caso individual — exame, condição de saúde,
+            medicação — eu encaminho para quem pode avaliar direito.
+          </p>
+        </details>
+
+        <details class="pergunta">
+          <summary>De onde vem o que você escreve?</summary>
+          <p>
+            Do que estudo na graduação e de material de referência como o Guia Alimentar
+            para a População Brasileira, do Ministério da Saúde, e as diretrizes das
+            sociedades brasileiras da área. Quando um assunto ainda está em discussão,
+            eu digo que está.
+          </p>
+        </details>
+
+        <details class="pergunta">
+          <summary>Você indica suplemento?</summary>
+          <p>
+            Não por aqui. Suplemento depende de avaliação, de exame e de contexto —
+            três coisas que um site não tem como saber sobre você.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== CONTATO ====================== -->
+  <section class="secao secao-contato" id="contato">
+    <div class="conteiner contato-grade">
+      <div>
+        <p class="secao-selo claro">Contato</p>
+        <h2>Vamos conversar</h2>
+        <p class="contato-lead">
+          Dúvida sobre um conteúdo, convite para parceria ou só um oi: é por aqui.
+        </p>
+        <ul class="contato-lista">
+          <li><span>Instagram</span><a href="https://instagram.com/carolinevbernardo">@carolinevbernardo</a></li>
+          <li><span>WhatsApp</span><a href="https://wa.me/5521979771526">(21) 97977-1526</a></li>
+        </ul>
+        <a class="botao botao-realce botao-contato" href="https://wa.me/5521979771526">Chamar no WhatsApp</a>
+      </div>
+      <p class="contato-nota">
+        Os dados de contato da Caroline ficam em
+        <code>index.html</code>, na seção <code>#contato</code>. O número do WhatsApp
+        fica também na constante <code>WHATSAPP</code> de <code>assets/app.js</code>.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="conteiner">
+
+    <p class="rodape-aviso">
+      Conteúdo educativo, de caráter geral, produzido por acadêmica de Nutrição.
+      Não substitui consulta com nutricionista ou médico, não constitui prescrição
+      dietética e não se aplica a gestantes, lactantes, crianças, adolescentes,
+      atletas ou pessoas com doença renal, hepática ou cardíaca em tratamento.
+    </p>
+
+    <div class="rodape-linha">
+      <p class="rodape-marca">© <span id="ano">2026</span> Caroline Verdan · Acadêmica de Nutrição</p>
+
+      <!-- ===== crédito do desenvolvedor ===== -->
+      <div class="credito">
+        <span class="credito-rotulo">Desenvolvido por</span>
+        <a class="credito-bloco" href="mailto:domdevlabs@gmail.com">
+          <img class="credito-logo" src="assets/domdevlabs.png" width="188" height="160"
+               alt="Logo da DomDevLabs" loading="lazy" decoding="async">
+          <span class="credito-dados">
+            <strong>DomDevLabs</strong>
+            <span>domdevlabs@gmail.com</span>
+            <span>(21) 99532-1173</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <p class="rodape-versao">v1.1.1</p>
+  </div>
+</footer>
+
+<div class="barra-movel">
+  <a class="botao" href="#contato">Falar com a Caroline</a>
+</div>
+
+<div class="so-leitor" id="anuncio" role="status" aria-live="polite"></div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Caroline Verdan","description":"Acadêmica de Nutrição que publica conteúdo educativo sobre alimentação e hábitos do dia a dia.","url":"https://carolineverdan.vercel.app/","jobTitle":"Acadêmica de Nutrição","knowsLanguage":"pt-BR","address":{"@type":"PostalAddress","addressLocality":"Rio de Janeiro","addressRegion":"RJ","addressCountry":"BR"},"sameAs":["https://instagram.com/carolinevbernardo"]}
+</script>
+
+<script defer src="assets/desenho.js"></script>
+<script defer src="assets/app.js"></script>
+</body>
+</html>
