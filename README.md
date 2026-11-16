@@ -5,7 +5,7 @@ dicas de nutrição filtráveis por tema e uma calculadora de IMC educativa.
 Todo o cálculo acontece no navegador do visitante — nenhum dado é enviado a
 servidor algum, o que evita qualquer tratamento de dado sensível de saúde.
 
-**Versão:** v1.1.1
+**Versão:** v1.1.2
 **Desenvolvido por:** DomDevLabs · domdevlabs@gmail.com · (21) 99532-1173
 
 ## Estrutura
@@ -37,7 +37,17 @@ python3 -m http.server 8000
 
 Pelo protocolo `file://` as fontes locais podem não carregar — prefira o servidor.
 
-## Publicar no GitHub
+## Já publicado
+
+- **Site:** https://caroline-verdan.vercel.app
+- **Repositório:** https://github.com/jeffersonfabre/carolverdan
+- A Vercel está ligada ao repositório: todo `git push` na `main` gera um deploy novo sozinho.
+
+Se trocar o domínio depois, atualize `canonical`, `og:url`, `og:image` e o
+JSON-LD no `index.html`, mais `robots.txt` e `sitemap.xml` — e recalcule o hash
+da CSP (instruções abaixo).
+
+## Publicar no GitHub (histórico)
 
 O repositório já está iniciado, com o primeiro commit feito. Falta só apontar
 para o seu GitHub e enviar:
@@ -58,7 +68,6 @@ git push -u origin main
 
 | Onde | O que |
 | --- | --- |
-| `index.html`, `og:*`, `canonical`, JSON-LD | domínio real, no lugar de `carolineverdan.vercel.app` |
 | `index.html`, seção `#sobre` | texto de apresentação na voz dela |
 | `robots.txt` e `sitemap.xml` | domínio real |
 | `assets/style.css`, bloco `:root` | cores, se quiser outro tom |
