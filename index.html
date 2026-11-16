@@ -31,7 +31,7 @@
 </head>
 <body>
 
-<a class="pular" href="#dicas">Ir para as dicas</a>
+<a class="pular" href="#calculadora">Ir para a calculadora</a>
 
 <header class="topo">
   <div class="conteiner topo-linha">
@@ -40,8 +40,8 @@
       <span class="marca-sub">Nutrição</span>
     </a>
     <nav class="topo-nav" aria-label="Principal">
-      <a href="#dicas">Dicas</a>
       <a href="#calculadora">Calculadora</a>
+      <a href="#dicas">Dicas</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato" class="botao botao-pequeno">Falar comigo</a>
     </nav>
@@ -71,10 +71,169 @@
       </p>
 
       <div class="heroi-acoes">
-        <a class="botao" href="#dicas">Ver as dicas</a>
-        <a class="botao botao-vazado" href="#calculadora">Calcular meu IMC</a>
+        <a class="botao" href="#calculadora">Calcular meu IMC</a>
+        <a class="botao botao-vazado" href="#dicas">Ver as dicas</a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ====================== CALCULADORA ====================== -->
+  <section class="secao secao-calculadora" id="calculadora">
+    <div class="conteiner">
+      <p class="secao-selo">Ferramenta</p>
+      <h2>Calcule seu IMC</h2>
+      <p class="secao-lead">
+        Coloque seu peso e sua altura para ver onde você está hoje e qual é a faixa
+        de peso de referência para a sua altura. A conta acontece no seu próprio
+        navegador — nada é enviado para lugar nenhum.
+      </p>
+
+      <div class="calc-grade">
+
+        <form class="form" id="form-medidas" novalidate>
+          <div class="campos">
+            <div class="campo">
+              <label for="peso">Peso</label>
+              <div class="campo-caixa">
+                <input type="text" id="peso" inputmode="decimal" placeholder="68,5"
+                       autocomplete="off" enterkeyhint="done" aria-describedby="ajuda-peso">
+                <span class="unidade" aria-hidden="true">kg</span>
+              </div>
+              <p class="ajuda" id="ajuda-peso">Em quilos. Pode usar vírgula.</p>
+            </div>
+
+            <div class="campo">
+              <label for="altura">Altura</label>
+              <div class="campo-caixa">
+                <input type="text" id="altura" inputmode="numeric" placeholder="165"
+                       autocomplete="off" enterkeyhint="done" aria-describedby="ajuda-altura">
+                <span class="unidade" aria-hidden="true">cm</span>
+              </div>
+              <p class="ajuda" id="ajuda-altura">Em centímetros, não em metros.</p>
+            </div>
+          </div>
+
+          <fieldset class="escolha">
+            <legend>Sexo biológico</legend>
+            <div class="escolha-opcoes">
+              <input type="radio" name="sexo" id="sexo-f" value="f">
+              <label for="sexo-f">Feminino</label>
+              <input type="radio" name="sexo" id="sexo-m" value="m">
+              <label for="sexo-m">Masculino</label>
+            </div>
+            <p class="ajuda">Não muda o IMC. Entra no cálculo de energia, junto com a idade.</p>
+          </fieldset>
+
+          <p class="erro" id="erro" role="alert" hidden></p>
+
+          <details class="refinar">
+            <summary>Refinar com idade e rotina <span class="refinar-nota">opcional</span></summary>
+            <div class="refinar-corpo">
+              <div class="campos">
+                <div class="campo">
+                  <label for="idade">Idade</label>
+                  <div class="campo-caixa">
+                    <input type="text" id="idade" inputmode="numeric" placeholder="29" autocomplete="off">
+                    <span class="unidade" aria-hidden="true">anos</span>
+                  </div>
+                </div>
+                <div class="campo">
+                  <label for="rotina">Rotina de movimento</label>
+                  <div class="campo-caixa">
+                    <select id="rotina">
+                      <option value="1.2">Sentada quase o dia todo</option>
+                      <option value="1.375">Exercício leve, 1 a 3 dias</option>
+                      <option value="1.55" selected>Exercício moderado, 3 a 5 dias</option>
+                      <option value="1.725">Exercício intenso, 6 a 7 dias</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <p class="refinar-explica">
+                Com idade, sexo e rotina a página estima o gasto energético diário pela
+                equação de Mifflin-St Jeor. É uma estimativa de ponto de partida, não
+                uma prescrição.
+              </p>
+            </div>
+          </details>
+
+          <div class="form-acoes">
+            <button type="button" class="botao botao-vazado" id="btn-limpar">Limpar campos</button>
+          </div>
+        </form>
+
+        <div class="instrumento">
+          <div class="regua-bloco">
+            <div class="regua" id="regua">
+              <div class="regua-faixa" data-faixa="baixo"></div>
+              <div class="regua-faixa" data-faixa="adequado"></div>
+              <div class="regua-faixa" data-faixa="sobrepeso"></div>
+              <div class="regua-faixa" data-faixa="obesidade"></div>
+              <ul class="regua-tracos" id="regua-tracos" aria-hidden="true"></ul>
+              <div class="marcador" id="marcador" hidden>
+                <span class="marcador-linha"></span>
+                <span class="marcador-valor" id="marcador-valor">—</span>
+              </div>
+            </div>
+            <p class="regua-legenda">Índice de massa corporal</p>
+          </div>
+
+          <div class="leitura">
+            <p class="leitura-vazia" id="leitura-vazia">
+              Sem medidas ainda. Preencha peso e altura para ver a leitura.
+            </p>
+
+            <div class="leitura-corpo" id="leitura-corpo" hidden>
+              <p class="leitura-rotulo">Seu IMC</p>
+              <p class="leitura-numero" id="imc-numero">—</p>
+              <p class="leitura-classe" id="imc-classe">—</p>
+              <p class="leitura-frase" id="imc-frase"></p>
+
+              <dl class="leitura-dados">
+                <div>
+                  <dt>Faixa de peso de referência para a sua altura</dt>
+                  <dd id="faixa-peso">—</dd>
+                </div>
+                <div id="linha-diferenca">
+                  <dt id="diferenca-rotulo">Distância até essa faixa</dt>
+                  <dd id="diferenca-valor">—</dd>
+                </div>
+                <div id="linha-energia" hidden>
+                  <dt>Gasto energético estimado por dia</dt>
+                  <dd id="energia-valor">—</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- gráficos -->
+      <div class="visual" id="visual" hidden>
+        <figure class="painel painel-grafico">
+          <h3>Seu peso e a faixa de referência</h3>
+          <svg viewBox="0 0 340 100" class="gr" id="graf-faixa" role="img" aria-labelledby="faixa-desc"></svg>
+          <figcaption id="faixa-desc" class="gr-desc"></figcaption>
+        </figure>
+
+        <figure class="painel painel-grafico" id="painel-projecao" hidden>
+          <h3>Em quanto tempo, num ritmo seguro</h3>
+          <svg viewBox="0 0 340 142" class="gr" id="graf-projecao" role="img" aria-labelledby="proj-desc"></svg>
+          <p class="gr-legenda">
+            <span class="chave chave-rapida"></span><span id="leg-rapida">—</span>
+            <span class="chave chave-lenta"></span><span id="leg-lenta">—</span>
+          </p>
+          <figcaption id="proj-desc" class="gr-desc"></figcaption>
+        </figure>
+      </div>
+
+      <p class="calc-nota">
+        O IMC é uma triagem populacional, não um diagnóstico. Ele não sabe quanto do
+        seu peso é músculo, onde a gordura está distribuída, nem o que dizem os seus
+        exames. Serve para dar um ponto de partida à conversa — o resto é com um
+        profissional.
+      </p>
     </div>
   </section>
 
@@ -230,165 +389,6 @@
     </div>
   </section>
 
-  <!-- ====================== CALCULADORA ====================== -->
-  <section class="secao secao-calculadora" id="calculadora">
-    <div class="conteiner">
-      <p class="secao-selo">Ferramenta</p>
-      <h2>Calcule seu IMC</h2>
-      <p class="secao-lead">
-        Coloque seu peso e sua altura para ver onde você está hoje e qual é a faixa
-        de peso de referência para a sua altura. A conta acontece no seu próprio
-        navegador — nada é enviado para lugar nenhum.
-      </p>
-
-      <div class="calc-grade">
-
-        <form class="form" id="form-medidas" novalidate>
-          <div class="campos">
-            <div class="campo">
-              <label for="peso">Peso</label>
-              <div class="campo-caixa">
-                <input type="text" id="peso" inputmode="decimal" placeholder="68,5"
-                       autocomplete="off" enterkeyhint="done" aria-describedby="ajuda-peso">
-                <span class="unidade" aria-hidden="true">kg</span>
-              </div>
-              <p class="ajuda" id="ajuda-peso">Em quilos. Pode usar vírgula.</p>
-            </div>
-
-            <div class="campo">
-              <label for="altura">Altura</label>
-              <div class="campo-caixa">
-                <input type="text" id="altura" inputmode="numeric" placeholder="165"
-                       autocomplete="off" enterkeyhint="done" aria-describedby="ajuda-altura">
-                <span class="unidade" aria-hidden="true">cm</span>
-              </div>
-              <p class="ajuda" id="ajuda-altura">Em centímetros, não em metros.</p>
-            </div>
-          </div>
-
-          <fieldset class="escolha">
-            <legend>Sexo biológico</legend>
-            <div class="escolha-opcoes">
-              <input type="radio" name="sexo" id="sexo-f" value="f">
-              <label for="sexo-f">Feminino</label>
-              <input type="radio" name="sexo" id="sexo-m" value="m">
-              <label for="sexo-m">Masculino</label>
-            </div>
-            <p class="ajuda">Não muda o IMC. Entra no cálculo de energia, junto com a idade.</p>
-          </fieldset>
-
-          <p class="erro" id="erro" role="alert" hidden></p>
-
-          <details class="refinar">
-            <summary>Refinar com idade e rotina <span class="refinar-nota">opcional</span></summary>
-            <div class="refinar-corpo">
-              <div class="campos">
-                <div class="campo">
-                  <label for="idade">Idade</label>
-                  <div class="campo-caixa">
-                    <input type="text" id="idade" inputmode="numeric" placeholder="29" autocomplete="off">
-                    <span class="unidade" aria-hidden="true">anos</span>
-                  </div>
-                </div>
-                <div class="campo">
-                  <label for="rotina">Rotina de movimento</label>
-                  <div class="campo-caixa">
-                    <select id="rotina">
-                      <option value="1.2">Sentada quase o dia todo</option>
-                      <option value="1.375">Exercício leve, 1 a 3 dias</option>
-                      <option value="1.55" selected>Exercício moderado, 3 a 5 dias</option>
-                      <option value="1.725">Exercício intenso, 6 a 7 dias</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <p class="refinar-explica">
-                Com idade, sexo e rotina a página estima o gasto energético diário pela
-                equação de Mifflin-St Jeor. É uma estimativa de ponto de partida, não
-                uma prescrição.
-              </p>
-            </div>
-          </details>
-
-          <div class="form-acoes">
-            <button type="button" class="botao botao-vazado" id="btn-limpar">Limpar campos</button>
-          </div>
-        </form>
-
-        <div class="instrumento">
-          <div class="regua-bloco">
-            <div class="regua" id="regua">
-              <div class="regua-faixa" data-faixa="baixo"></div>
-              <div class="regua-faixa" data-faixa="adequado"></div>
-              <div class="regua-faixa" data-faixa="sobrepeso"></div>
-              <div class="regua-faixa" data-faixa="obesidade"></div>
-              <ul class="regua-tracos" id="regua-tracos" aria-hidden="true"></ul>
-              <div class="marcador" id="marcador" hidden>
-                <span class="marcador-linha"></span>
-                <span class="marcador-valor" id="marcador-valor">—</span>
-              </div>
-            </div>
-            <p class="regua-legenda">Índice de massa corporal</p>
-          </div>
-
-          <div class="leitura">
-            <p class="leitura-vazia" id="leitura-vazia">
-              Sem medidas ainda. Preencha peso e altura para ver a leitura.
-            </p>
-
-            <div class="leitura-corpo" id="leitura-corpo" hidden>
-              <p class="leitura-rotulo">Seu IMC</p>
-              <p class="leitura-numero" id="imc-numero">—</p>
-              <p class="leitura-classe" id="imc-classe">—</p>
-              <p class="leitura-frase" id="imc-frase"></p>
-
-              <dl class="leitura-dados">
-                <div>
-                  <dt>Faixa de peso de referência para a sua altura</dt>
-                  <dd id="faixa-peso">—</dd>
-                </div>
-                <div id="linha-diferenca">
-                  <dt id="diferenca-rotulo">Distância até essa faixa</dt>
-                  <dd id="diferenca-valor">—</dd>
-                </div>
-                <div id="linha-energia" hidden>
-                  <dt>Gasto energético estimado por dia</dt>
-                  <dd id="energia-valor">—</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- gráficos -->
-      <div class="visual" id="visual" hidden>
-        <figure class="painel painel-grafico">
-          <h3>Seu peso e a faixa de referência</h3>
-          <svg viewBox="0 0 340 96" class="gr" id="graf-faixa" role="img" aria-labelledby="faixa-desc"></svg>
-          <figcaption id="faixa-desc" class="gr-desc"></figcaption>
-        </figure>
-
-        <figure class="painel painel-grafico" id="painel-projecao" hidden>
-          <h3>Em quanto tempo, num ritmo seguro</h3>
-          <svg viewBox="0 0 340 152" class="gr" id="graf-projecao" role="img" aria-labelledby="proj-desc"></svg>
-          <p class="gr-legenda">
-            <span class="chave chave-rapida"></span><span id="leg-rapida">—</span>
-            <span class="chave chave-lenta"></span><span id="leg-lenta">—</span>
-          </p>
-          <figcaption id="proj-desc" class="gr-desc"></figcaption>
-        </figure>
-      </div>
-
-      <p class="calc-nota">
-        O IMC é uma triagem populacional, não um diagnóstico. Ele não sabe quanto do
-        seu peso é músculo, onde a gordura está distribuída, nem o que dizem os seus
-        exames. Serve para dar um ponto de partida à conversa — o resto é com um
-        profissional.
-      </p>
-    </div>
-  </section>
-
   <!-- ====================== SOBRE ====================== -->
   <section class="secao secao-sobre" id="sobre">
     <div class="conteiner sobre-grade">
@@ -495,11 +495,6 @@
         </ul>
         <a class="botao botao-realce botao-contato" href="https://wa.me/5521979771526">Chamar no WhatsApp</a>
       </div>
-      <p class="contato-nota">
-        Os dados de contato da Caroline ficam em
-        <code>index.html</code>, na seção <code>#contato</code>. O número do WhatsApp
-        fica também na constante <code>WHATSAPP</code> de <code>assets/app.js</code>.
-      </p>
     </div>
   </section>
 
@@ -533,7 +528,7 @@
       </div>
     </div>
 
-    <p class="rodape-versao">v1.1.2</p>
+    <p class="rodape-versao">v1.2.0</p>
   </div>
 </footer>
 

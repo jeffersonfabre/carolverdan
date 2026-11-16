@@ -106,8 +106,10 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
 .marca-sub { display: block; font-size: .68rem; font-weight: 500;
   letter-spacing: .22em; text-transform: uppercase; color: var(--vinho); }
 .topo-nav { display: flex; align-items: center; gap: 1.7rem; }
-.topo-nav a { font-size: .95rem; font-weight: 500; color: var(--ameixa-suave); text-decoration: none; }
-.topo-nav a:hover { color: var(--vinho); }
+/* escopado para não sobrepor a cor do botão — .topo-nav a tem
+   especificidade maior que .botao e deixava texto escuro sobre o vinho */
+.topo-nav a:not(.botao) { font-size: .95rem; font-weight: 500; color: var(--ameixa-suave); text-decoration: none; }
+.topo-nav a:not(.botao):hover { color: var(--vinho); }
 .topo-nav a:not(.botao) { display: none; }
 @media (min-width: 54rem) { .topo-nav a:not(.botao) { display: inline; } }
 
@@ -327,19 +329,29 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
 .gr { width: 100%; height: auto; display: block; }
 .g-trilho { fill: var(--areia-2); }
 .g-faixa  { fill: var(--salvia); }
-.g-marca  { stroke: var(--vinho); stroke-width: 2.5; }
-.g-rotulo { font-family: var(--sans); font-size: 11px; font-weight: 500; fill: var(--cinza); }
-.g-valor  { font-family: var(--sans); font-size: 12.5px; font-weight: 600; fill: var(--ameixa); }
+.g-marca  { stroke: var(--vinho); stroke-width: 2.5; stroke-linecap: round; }
+.g-ponto-marca { fill: var(--vinho); }
+.g-tick   { stroke: var(--cinza); stroke-width: 1.5; }
+.g-eixo   { stroke: var(--areia-2); stroke-width: 1.5; }
 .g-grade  { stroke: var(--areia-2); stroke-width: 1; }
-.g-alvo   { stroke: var(--salvia); stroke-width: 1.5; stroke-dasharray: 4 3; }
-.g-linha  { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.g-linha-lenta  { stroke: #d8a8b9; }
+.g-alvo   { stroke: var(--salvia); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.g-rotulo { font-family: var(--sans); font-size: 12px; font-weight: 500;
+            fill: var(--cinza); font-variant-numeric: tabular-nums; }
+.g-rotulo-forte { font-family: var(--sans); font-size: 12px; font-weight: 600;
+            fill: var(--ameixa-suave); font-variant-numeric: tabular-nums; }
+.g-valor  { font-family: var(--sans); font-size: 14px; font-weight: 600;
+            fill: var(--ameixa); font-variant-numeric: tabular-nums; }
+.g-linha  { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.g-ponto  { stroke: var(--branco); stroke-width: 2; }
+.g-linha-lenta  { stroke: #c98fa6; }
+.g-linha-lenta-ponto  { fill: #c98fa6; }
 .g-linha-rapida { stroke: var(--vinho); }
+.g-linha-rapida-ponto { fill: var(--vinho); }
 .gr-legenda { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem 1rem;
   font-size: .8rem; font-weight: 500; color: var(--ameixa-suave); margin: .8rem 0 0; }
 .chave { width: 16px; height: 3px; border-radius: 2px; display: inline-block; }
 .chave-rapida { background: var(--vinho); }
-.chave-lenta  { background: #d8a8b9; }
+.chave-lenta  { background: #c98fa6; }
 .gr-desc { font-size: .84rem; color: var(--cinza); margin: .8rem 0 0; line-height: 1.5; max-width: 60ch; }
 
 .calc-nota {
@@ -377,8 +389,7 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
 /* ============================ CONTATO ============================ */
 .secao-contato { background: var(--ameixa); color: var(--rosa); }
 .secao-contato h2 { color: var(--branco); }
-.contato-grade { display: grid; gap: 2.5rem; }
-@media (min-width: 58rem) { .contato-grade { grid-template-columns: 1.5fr 1fr; gap: 4rem; } }
+.contato-grade { display: grid; gap: 2.5rem; max-width: 46rem; }
 .contato-lead { color: var(--rosa); margin-top: 1rem; }
 .contato-lista { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: 1rem; }
 .contato-lista li { border-top: 1px solid #55384a; padding-top: .8rem; }
