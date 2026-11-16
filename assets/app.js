@@ -50,7 +50,7 @@
      ========================================================= */
   var el = {};
   [ 'form-medidas','peso','altura','idade','rotina','erro','btn-limpar',
-    'regua-tracos','marcador','marcador-valor','leitura-vazia','leitura-corpo',
+    'marcador','marcador-valor','leitura-vazia','leitura-corpo',
     'imc-numero','imc-classe','imc-frase','faixa-peso','linha-diferenca','diferenca-rotulo',
     'diferenca-valor','linha-energia','energia-valor','anuncio',
     'visual','graf-faixa','faixa-desc','painel-projecao','graf-projecao','proj-desc',
@@ -89,18 +89,6 @@
     var v = parseFloat(limpo);
     return isFinite(v) ? v : NaN;
   }
-
-  /* ---------------- traços da régua ---------------- */
-  (function desenharEscala() {
-    var html = '';
-    for (var i = ESCALA_MIN; i <= ESCALA_MAX; i++) {
-      var pos = ((i - ESCALA_MIN) / (ESCALA_MAX - ESCALA_MIN)) * 100;
-      var forte = i % 5 === 0;
-      html += '<li style="bottom:' + pos + '%"' + (forte ? ' data-forte' : '') + '>'
-            + (forte ? '<span>' + i + '</span>' : '') + '</li>';
-    }
-    el.reguaTracos.innerHTML = html;
-  })();
 
   /* ---------------- classificação (OMS, adultos) ---------------- */
   function classificar(imc) {
@@ -179,7 +167,7 @@
     el.imcClasse.textContent = c.nome;
     el.imcFrase.textContent = c.frase;
 
-    var pos = Math.max(0, Math.min(100, ((imc - ESCALA_MIN) / (ESCALA_MAX - ESCALA_MIN)) * 100));
+    var pos = Math.max(3, Math.min(97, ((imc - ESCALA_MIN) / (ESCALA_MAX - ESCALA_MIN)) * 100));
     el.marcador.hidden = false;
     el.marcador.style.bottom = pos + '%';
     el.marcadorValor.textContent = num(imc, 1);

@@ -267,33 +267,52 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
   border-radius: var(--raio); padding: clamp(1.4rem, 3.5vw, 2rem);
   box-shadow: var(--sombra);
 }
-.regua-bloco { display: flex; flex-direction: column; align-items: center; gap: .9rem; }
-.regua { position: relative; width: 62px; height: clamp(280px, 42vh, 380px);
-  background: var(--areia-2); border-radius: 6px; }
-.regua-faixa { position: absolute; left: 0; width: 24px; border-radius: 3px; }
-.regua-faixa[data-faixa="baixo"]     { bottom: 0;   height: 14%; background: #e2cdd6; }
-.regua-faixa[data-faixa="adequado"]  { bottom: 14%; height: 26%; background: var(--salvia); }
-.regua-faixa[data-faixa="sobrepeso"] { bottom: 40%; height: 20%; background: #d8a8b9; }
-.regua-faixa[data-faixa="obesidade"] { bottom: 60%; height: 40%; background: #c58fa4; }
-
-.regua-tracos { list-style: none; margin: 0; padding: 0; }
-.regua-tracos li { position: absolute; left: 28px; right: 0; display: flex;
-  align-items: center; gap: .35rem; transform: translateY(50%); }
-.regua-tracos li::before { content: ""; display: block; height: 1px; width: 6px; background: var(--cinza); }
-.regua-tracos li[data-forte]::before { width: 12px; background: var(--ameixa-suave); }
-.regua-tracos li span { font-size: .68rem; font-weight: 500; color: var(--ameixa-suave);
-  font-variant-numeric: tabular-nums; }
-
-.marcador { position: absolute; left: -8px; right: -8px; transform: translateY(50%);
-  transition: bottom .45s cubic-bezier(.22,1,.36,1); }
-.marcador-linha { display: block; height: 2px; width: 40px; background: var(--vinho); }
-.marcador-valor {
-  position: absolute; left: 46px; top: 50%; transform: translateY(-50%);
-  background: var(--vinho); color: var(--branco); font-size: .78rem; font-weight: 600;
-  font-variant-numeric: tabular-nums; padding: .15rem .45rem; border-radius: 5px; white-space: nowrap;
+.regua-bloco { min-width: 0; }
+.regua-titulo {
+  font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cinza); margin: 0 0 .9rem;
 }
-.regua-legenda { font-size: .72rem; font-weight: 500; color: var(--cinza);
-  margin: 0; text-align: center; max-width: 8rem; line-height: 1.3; }
+.regua-corpo { position: relative; display: flex; gap: .5rem; }
+
+/* números só nos limites que importam, alinhados à borda da faixa */
+.regua-escala { list-style: none; margin: 0; padding: 0; position: relative; width: 2.4rem; }
+.regua-escala li {
+  position: absolute; right: 0; transform: translateY(50%);
+  font-size: .78rem; font-weight: 600; color: var(--ameixa-suave);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.regua-escala li::after {
+  content: ""; position: absolute; right: -.5rem; top: 50%;
+  width: .35rem; height: 1px; background: var(--cinza);
+}
+
+.regua {
+  position: relative; flex: 1 1 auto; max-width: 11rem;
+  height: clamp(300px, 44vh, 360px);
+  display: flex; flex-direction: column;
+  border-radius: 8px; overflow: hidden;
+}
+.regua-faixa {
+  display: flex; align-items: center; padding: 0 .7rem;
+  font-size: .76rem; font-weight: 600; color: var(--ameixa);
+  line-height: 1.15;
+}
+.regua-faixa[data-faixa="obesidade"] { flex: 0 0 40%; background: #c58fa4; }
+.regua-faixa[data-faixa="sobrepeso"] { flex: 0 0 20%; background: #d8a8b9; }
+.regua-faixa[data-faixa="adequado"]  { flex: 0 0 26%; background: var(--salvia); color: var(--branco); }
+.regua-faixa[data-faixa="baixo"]     { flex: 0 0 14%; background: #e2cdd6; }
+
+.marcador {
+  position: absolute; left: 0; right: 0; transform: translateY(50%);
+  display: flex; align-items: center; pointer-events: none;
+  transition: bottom .45s cubic-bezier(.22,1,.36,1);
+}
+.marcador-linha { flex: 1 1 auto; height: 3px; background: var(--ameixa); }
+.marcador-valor {
+  flex: none; background: var(--ameixa); color: var(--branco);
+  font-size: .82rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  padding: .12rem .45rem; border-radius: 5px 0 0 5px; white-space: nowrap;
+}
 
 .leitura { min-width: 0; }
 .leitura-vazia { color: var(--cinza); font-size: 1rem; max-width: 26ch; }
@@ -312,9 +331,7 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
 
 @media (max-width: 40rem) {
   .instrumento { grid-template-columns: 1fr; }
-  .regua-bloco { flex-direction: row; align-items: center; gap: 1.2rem; }
-  .regua { height: 260px; }
-  .regua-legenda { text-align: left; }
+  .regua { max-width: none; height: 290px; }
 }
 
 /* ---------- gráficos ---------- */
@@ -353,6 +370,13 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
 .chave-rapida { background: var(--vinho); }
 .chave-lenta  { background: #c98fa6; }
 .gr-desc { font-size: .84rem; color: var(--cinza); margin: .8rem 0 0; line-height: 1.5; max-width: 60ch; }
+
+/* no celular o SVG encolhe junto com o painel: aumenta a fonte em
+   unidades do viewBox para o rótulo não virar letra de formiga */
+@media (max-width: 40rem) {
+  .g-rotulo, .g-rotulo-forte { font-size: 14px; }
+  .g-valor { font-size: 16px; }
+}
 
 .calc-nota {
   margin: 2rem 0 0; font-size: .92rem; color: var(--ameixa-suave);
