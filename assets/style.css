@@ -267,51 +267,61 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
   border-radius: var(--raio); padding: clamp(1.4rem, 3.5vw, 2rem);
   box-shadow: var(--sombra);
 }
-.regua-bloco { min-width: 0; }
+.regua-bloco { min-width: 0; width: 100%; max-width: 16.5rem; }
 .regua-titulo {
   font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--cinza); margin: 0 0 .9rem;
+  color: var(--cinza); margin: 0 0 1.1rem;
 }
-.regua-corpo { position: relative; display: flex; gap: .5rem; }
 
-/* números só nos limites que importam, alinhados à borda da faixa */
-.regua-escala { list-style: none; margin: 0; padding: 0; position: relative; width: 2.4rem; }
-.regua-escala li {
-  position: absolute; right: 0; transform: translateY(50%);
-  font-size: .78rem; font-weight: 600; color: var(--ameixa-suave);
-  font-variant-numeric: tabular-nums; white-space: nowrap;
-}
-.regua-escala li::after {
-  content: ""; position: absolute; right: -.5rem; top: 50%;
-  width: .35rem; height: 1px; background: var(--cinza);
-}
+/* Tudo é posicionado dentro de um bloco de altura explícita: nada aqui
+   depende de o navegador esticar um irmão para a altura certa. */
+.regua-corpo { position: relative; height: clamp(290px, 44vh, 340px); }
 
 .regua {
-  position: relative; flex: 1 1 auto; max-width: 11rem;
-  height: clamp(300px, 44vh, 360px);
-  display: flex; flex-direction: column;
-  border-radius: 8px; overflow: hidden;
-}
-.regua-faixa {
-  display: flex; align-items: center; padding: 0 .7rem;
-  font-size: .76rem; font-weight: 600; color: var(--ameixa);
-  line-height: 1.15;
+  position: absolute; left: 2.9rem; top: 0; bottom: 0; width: 12px;
+  display: flex; flex-direction: column; border-radius: 6px; overflow: hidden;
 }
 .regua-faixa[data-faixa="obesidade"] { flex: 0 0 40%; background: #c58fa4; }
-.regua-faixa[data-faixa="sobrepeso"] { flex: 0 0 20%; background: #d8a8b9; }
-.regua-faixa[data-faixa="adequado"]  { flex: 0 0 26%; background: var(--salvia); color: var(--branco); }
-.regua-faixa[data-faixa="baixo"]     { flex: 0 0 14%; background: #e2cdd6; }
+.regua-faixa[data-faixa="sobrepeso"] { flex: 0 0 20%; background: #dcaebe; }
+.regua-faixa[data-faixa="adequado"]  { flex: 0 0 26%; background: var(--salvia); }
+.regua-faixa[data-faixa="baixo"]     { flex: 0 0 14%; background: #e9d9e0; }
 
+/* números à esquerda, cada um com seu traço fino até a barra */
+.regua-escala, .regua-nomes { list-style: none; margin: 0; padding: 0; }
+.regua-escala li {
+  position: absolute; left: 0; width: 2.2rem; text-align: right;
+  transform: translateY(50%); font-size: .78rem; font-weight: 600;
+  color: var(--ameixa-suave); font-variant-numeric: tabular-nums; line-height: 1;
+}
+.regua-escala li::after {
+  content: ""; position: absolute; left: 2.45rem; top: 50%;
+  width: .45rem; height: 1px; background: var(--cinza);
+}
+
+/* nome de cada faixa à direita da barra, no meio dela */
+/* os nomes ficam depois da faixa reservada ao marcador, para a linha
+   nunca atravessar uma palavra */
+.regua-nomes li {
+  position: absolute; left: 9.4rem; transform: translateY(50%);
+  font-size: .82rem; font-weight: 500; color: var(--ameixa-suave);
+  line-height: 1; white-space: nowrap;
+}
+
+/* o marcador: linha fina atravessando, valor na ponta */
 .marcador {
-  position: absolute; left: 0; right: 0; transform: translateY(50%);
+  position: absolute; left: 2.9rem; width: 6rem;
   display: flex; align-items: center; pointer-events: none;
+  transform: translateY(50%);
   transition: bottom .45s cubic-bezier(.22,1,.36,1);
 }
-.marcador-linha { flex: 1 1 auto; height: 3px; background: var(--ameixa); }
+/* [hidden] é display:none na folha do navegador, e o display:flex acima
+   venceria — sem esta linha o marcador aparece antes de haver medida */
+.marcador[hidden] { display: none; }
+.marcador-linha { flex: 1 1 auto; height: 1.5px; background: var(--ameixa); }
 .marcador-valor {
-  flex: none; background: var(--ameixa); color: var(--branco);
-  font-size: .82rem; font-weight: 700; font-variant-numeric: tabular-nums;
-  padding: .12rem .45rem; border-radius: 5px 0 0 5px; white-space: nowrap;
+  flex: none; margin-left: .4rem; background: var(--ameixa); color: var(--branco);
+  font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  padding: .1rem .4rem; border-radius: 4px; white-space: nowrap;
 }
 
 .leitura { min-width: 0; }
@@ -331,7 +341,7 @@ a { color: var(--vinho); text-decoration-thickness: 1px; text-underline-offset: 
 
 @media (max-width: 40rem) {
   .instrumento { grid-template-columns: 1fr; }
-  .regua { max-width: none; height: 290px; }
+  .regua-bloco { max-width: none; }
 }
 
 /* ---------- gráficos ---------- */

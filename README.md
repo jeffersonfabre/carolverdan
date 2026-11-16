@@ -5,7 +5,7 @@ dicas de nutrição filtráveis por tema e uma calculadora de IMC educativa.
 Todo o cálculo acontece no navegador do visitante — nenhum dado é enviado a
 servidor algum, o que evita qualquer tratamento de dado sensível de saúde.
 
-**Versão:** v1.3.0
+**Versão:** v1.3.1
 **Desenvolvido por:** DomDevLabs · domdevlabs@gmail.com · (21) 99532-1173
 
 ## Estrutura
