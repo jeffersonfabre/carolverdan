@@ -5,7 +5,7 @@ dicas de nutrição filtráveis por tema e uma calculadora de IMC educativa.
 Todo o cálculo acontece no navegador do visitante — nenhum dado é enviado a
 servidor algum, o que evita qualquer tratamento de dado sensível de saúde.
 
-**Versão:** v1.3.2
+**Versão:** v1.3.3
 **Desenvolvido por:** DomDevLabs · domdevlabs@gmail.com · (21) 99532-1173
 
 ## Estrutura
@@ -14,9 +14,9 @@ servidor algum, o que evita qualquer tratamento de dado sensível de saúde.
 .
 ├── index.html              # conteúdo, Open Graph, JSON-LD
 ├── assets/
-│   ├── style.css           # paleta, tipografia, layout
-│   ├── app.js              # filtro das dicas + calculadora
-│   ├── desenho.js          # gráficos em SVG, sem biblioteca
+│   ├── style-1.3.3.css       # paleta, tipografia, layout (versão no nome)
+│   ├── app-1.3.3.js          # filtro das dicas + calculadora
+│   ├── desenho-1.3.3.js      # gráficos em SVG, sem biblioteca
 │   ├── caroline.webp       # retrato recortado em círculo (25 KB)
 │   ├── capa.jpg            # imagem 1200×630 do link no WhatsApp e no Google
 │   ├── domdevlabs.png     # emblema da DomDevLabs, fundo recortado
@@ -99,6 +99,20 @@ nutricionista com registro no CRN (Lei 8.234/1991). Por isso o site:
 Manter esses avisos protege a Caroline. Quando ela se formar e tirar o CRN,
 é só trocar o texto do selo, o aviso da seção "Sobre" e as duas perguntas —
 aí sim pode anunciar consulta.
+
+## A versão vai no NOME do CSS e do JS
+
+`style-<versão>.css`, `app-<versão>.js`, `desenho-<versão>.js`. A cada release,
+renomeie os três e atualize as referências no `index.html`.
+
+Antes isso era feito com `?v=`, e não bastou: há navegadores e proxies que
+ignoram a query string ao decidir o que está em cache. O resultado foi um
+visitante rodando o `app.js` antigo com o `index.html` novo — e o JS antigo
+procurava um elemento que o HTML novo não tem mais, estourava na primeira
+linha e deixava a calculadora morta, sem nada na tela.
+
+O `app.js` agora confere se todos os elementos existem antes de ligar a
+calculadora, e avisa no console se faltar algum, em vez de quebrar calado.
 
 ## Cuidado ao editar: a CSP proíbe `style=` inline
 

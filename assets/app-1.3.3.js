@@ -60,7 +60,14 @@
       document.getElementById(id);
   });
 
-  if (!el.formMedidas) return;
+  /* Se um dia o HTML mudar e sumir com algum elemento, o script não pode
+     estourar na primeira linha e derrubar a calculadora inteira: avisa no
+     console e sai em silêncio. */
+  var faltando = Object.keys(el).filter(function (k) { return !el[k]; });
+  if (faltando.length) {
+    if (window.console) console.warn('Calculadora desligada, faltam elementos:', faltando);
+    return;
+  }
 
   var radiosSexo = Array.prototype.slice.call(document.querySelectorAll('input[name="sexo"]'));
   function sexoEscolhido() {
